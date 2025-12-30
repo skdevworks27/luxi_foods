@@ -904,7 +904,7 @@ footer p{
     .nav-menu{
         position:fixed;
         top:80px;
-        
+        right:-100%;
         flex-direction:column;
         background:white;
         width:250px;
@@ -958,7 +958,7 @@ footer p{
     }
 }
 
-@media(max-width:500px){
+@media(max-width:600px){
     .hero-text h1{font-size:2rem;}
     .section-title h2{font-size:2rem;}
     .products{
@@ -970,5 +970,3 @@ footer p{
         padding:2rem 1.5rem;
     }
 }
-
-
