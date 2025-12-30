@@ -958,7 +958,7 @@ footer p{
     }
 }
 
-@media(max-width:768px){
+@media(max-width:500px){
     .hero-text h1{font-size:2rem;}
     .section-title h2{font-size:2rem;}
     .products{
