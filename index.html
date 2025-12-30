@@ -7,7 +7,7 @@
   <meta name="description" content="Luxi Foods is a premium food brand. Home of Soboluxe and upcoming quality products including rabbit meat and roasted groundnuts." />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css"
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -104,7 +104,7 @@
     <div class="product-card" data-category="available">
       <div class="product-image">
         <img src="products/images/sobolopack.png" alt="Soboluxe" />
-        <div class="quick-view" onclick="openModal('soboluxe')">Quick View</div>
+        <a href="products/soboluxe.html" class="quick-view">Visit Product</a>
       </div>
       <div class="product-info">
         <span class="badge">Available Now</span>
@@ -116,7 +116,7 @@
     <div class="product-card" data-category="coming-soon">
       <div class="product-image">
         <img src="products/images/rabmeat.png" alt="Rabbit Meat" />
-        <div class="quick-view" onclick="openModal('rabbit')">Quick View</div>
+        <a href="products/rabbit.html" class="quick-view">Visit Product</a>
       </div>
       <div class="product-info">
         <span class="badge coming-soon">Coming Soon</span>
@@ -128,7 +128,7 @@
     <div class="product-card" data-category="coming-soon">
       <div class="product-image">
         <img src="https://images.unsplash.com/photo-1627485937980-221c88ac04b3" alt="Roasted Groundnuts" />
-        <div class="quick-view" onclick="openModal('groundnuts')">Quick View</div>
+        <a href="products/groundnuts.html" class="quick-view">Visit Product</a>
       </div>
       <div class="product-info">
         <span class="badge coming-soon">Coming Soon</span>
@@ -138,28 +138,6 @@
     </div>
   </div>
 </section>
-
-<!-- PRODUCT MODAL -->
-<div class="modal" id="productModal">
-  <div class="modal-content">
-    <div class="modal-close" onclick="closeModal()">&times;</div>
-    <img class="modal-image" id="modalImage" src="" alt="">
-    <div class="modal-body">
-      <h2 id="modalTitle"></h2>
-      <p id="modalDescription"></p>
-      <div id="modalDetails"></div>
-
-      <!-- VIEW PRODUCT BUTTON -->
-      <a id="modalLink" class="btn btn-primary" href="#">
-        View Product
-      </a>
-    </div>
-      <h2 id="modalTitle"></h2>
-      <p id="modalDescription"></p>
-      <div id="modalDetails"></div>
-    </div>
-  </div>
-</div>
 
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
