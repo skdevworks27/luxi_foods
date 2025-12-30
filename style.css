@@ -904,7 +904,7 @@ footer p{
     .nav-menu{
         position:fixed;
         top:80px;
-        right:-100%;
+        
         flex-direction:column;
         background:white;
         width:250px;
@@ -970,4 +970,5 @@ footer p{
         padding:2rem 1.5rem;
     }
 }
+
 
