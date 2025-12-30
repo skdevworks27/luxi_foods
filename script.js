@@ -149,3 +149,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// Logo Subtle Pulse Animation
+const logoSpan = document.querySelector('.logo span');
+
+setInterval(() => {
+  logoSpan.style.opacity = '0.85';
+  
+  setTimeout(() => {
+    logoSpan.style.opacity = '1';
+  }, 1500);
+}, 3000);
