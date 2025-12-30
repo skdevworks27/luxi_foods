@@ -63,8 +63,10 @@ header.scrolled{
     letter-spacing:1px;
 }
 
-.logo span{
-    color:var(--secondary);
+.logo span {
+    color: var(--secondary);
+    text-decoration: underline; /* Add this - underline always there */
+    transition: opacity 0.8s ease; /* Add this - smooth fade */
 }
 
 .nav-menu{
