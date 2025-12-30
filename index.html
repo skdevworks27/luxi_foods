@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxi Foods | Premium African Food Brand</title>
+  <meta name="description" content="Luxi Foods is a premium food brand. Home of Soboluxe and upcoming quality products including rabbit meat and roasted groundnuts." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css"
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div class="loading">
+  <div class="loading-spinner"></div>
+</div>
+
+<!-- CURSOR TRAIL -->
+<div class="cursor-dot"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-dot"></div>
+
+<header>
+  <div class="nav">
+    <div class="logo">Luxi<span>Foods</span></div>
+    <ul class="nav-menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Premium Quality Foods,<br> Crafted by <span>Luxi Foods</span></h1>
+    <p>Luxi Foods is a modern food brand delivering premium, hygienic and carefully processed products. Home of <strong>Soboluxe</strong> and many exciting products coming soon.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn btn-primary">Explore Products</a>
+      <a href="#about" class="btn btn-outline">Our Story</a>
+    </div>
+  </div>
+  
+  <div class="hero-slider">
+    <div class="slide active" style="background-image:url('products/images/sobolo1.png');"></div>
+    <div class="slide" style="background-image:url('products/images/rabmeat1.png');"></div>
+    <div class="slide" style="background-image:url('products/images/rabmeat2.png');"></div>
+    <div class="slider-nav">
+      <div class="slider-dot active"></div>
+      <div class="slider-dot"></div>
+      <div class="slider-dot"></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <i class="fas fa-award"></i>
+      <h3>100%</h3>
+      <p>Premium Quality</p>
+    </div>
+    <div class="stat-item">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Certified</h3>
+      <p>Food Safety Standards</p>
+    </div>
+    <div class="stat-item">
+      <i class="fas fa-heart"></i>
+      <h3>Trusted</h3>
+      <p>By Our Customers</p>
+    </div>
+    <div class="stat-item">
+      <i class="fas fa-leaf"></i>
+      <h3>Natural</h3>
+      <p>Quality Ingredients</p>
+    </div>
+  </div>
+</div>
+
+<section id="products">
+  <div class="section-title">
+    <h2>Our Products</h2>
+    <p>Quality you can trust, taste you'll love</p>
+  </div>
+  
+  <div class="product-filters">
+    <button class="filter-btn active" data-filter="all">All Products</button>
+    <button class="filter-btn" data-filter="available">Available</button>
+    <button class="filter-btn" data-filter="coming-soon">Coming Soon</button>
+  </div>
+  
+  <div class="products">
+    <div class="product-card" data-category="available">
+      <div class="product-image">
+        <img src="products/images/sobolopack.png" alt="Soboluxe" />
+        <div class="quick-view" onclick="openModal('soboluxe')">Quick View</div>
+      </div>
+      <div class="product-info">
+        <span class="badge">Available Now</span>
+        <h3>Soboluxe</h3>
+        <p>A premium Luxi Foods product crafted with quality ingredients and excellent packaging for the discerning customer.</p>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="coming-soon">
+      <div class="product-image">
+        <img src="products/images/rabmeat.png" alt="Rabbit Meat" />
+        <div class="quick-view" onclick="openModal('rabbit')">Quick View</div>
+      </div>
+      <div class="product-info">
+        <span class="badge coming-soon">Coming Soon</span>
+        <h3>Rabbit Meat</h3>
+        <p>Clean, healthy and well-processed rabbit meat sourced with strict quality control and hygiene standards.</p>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="coming-soon">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1627485937980-221c88ac04b3" alt="Roasted Groundnuts" />
+        <div class="quick-view" onclick="openModal('groundnuts')">Quick View</div>
+      </div>
+      <div class="product-info">
+        <span class="badge coming-soon">Coming Soon</span>
+        <h3>Roasted Groundnuts</h3>
+        <p>Crunchy, tasty roasted groundnuts prepared with care for exceptional freshness and long shelf life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT MODAL -->
+<div class="modal" id="productModal">
+  <div class="modal-content">
+    <div class="modal-close" onclick="closeModal()">&times;</div>
+    <img class="modal-image" id="modalImage" src="" alt="">
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <div id="modalDetails"></div>
+
+      <!-- VIEW PRODUCT BUTTON -->
+      <a id="modalLink" class="btn btn-primary" href="#">
+        View Product
+      </a>
+    </div>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <div id="modalDetails"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-title">
+    <h2>What Our Customers Say</h2>
+    <p>Real reviews from real people</p>
+  </div>
+  
+  <div class="testimonial-slider">
+    <div class="testimonial active">
+      <div class="testimonial-avatar">AK</div>
+      <div class="testimonial-rating">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <p class="testimonial-text">"Soboluxe is absolutely amazing! The quality and packaging are top-notch. Luxi Foods has set a new standard for premium food products."</p>
+      <p class="testimonial-author">- Akosua K.</p>
+    </div>
+    
+    <div class="testimonial">
+      <div class="testimonial-avatar">KM</div>
+      <div class="testimonial-rating">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <p class="testimonial-text">"I've never tasted food products with such consistent quality. Luxi Foods is my go-to brand for premium food items. Can't wait for the new products!"</p>
+      <p class="testimonial-author">- Kwame M.</p>
+    </div>
+    
+    <div class="testimonial">
+      <div class="testimonial-avatar">EA</div>
+      <div class="testimonial-rating">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <p class="testimonial-text">"The attention to hygiene and quality is evident in every product. Luxi Foods has earned my trust and loyalty. Highly recommended!"</p>
+      <p class="testimonial-author">- Esi A.</p>
+    </div>
+    
+    <div class="testimonial-nav">
+      <button class="testimonial-btn" onclick="changeTestimonial(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="testimonial-btn" onclick="changeTestimonial(1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2>Stay Updated</h2>
+  <p>Subscribe to our newsletter for exclusive offers and product launches</p>
+  <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+    <button type="submit" class="newsletter-btn">Subscribe Now</button>
+  </form>
+</section>
+
+<section id="about">
+  <div class="section-title">
+    <h2>About Luxi Foods</h2>
+    <p>Building a legacy of quality and trust</p>
+  </div>
+  <div class="about">
+    <p>Luxi Foods is built on quality, hygiene and innovation. Our mission is to deliver trusted food products that meet modern standards while staying rooted in local excellence. Soboluxe represents our commitment to premium branding and consistency as we expand into more food categories.</p>
+    
+    <div class="values">
+      <div class="value-item">
+        <i class="fas fa-check-circle"></i>
+        <h4>Quality First</h4>
+        <p>We never compromise on the quality of our ingredients and processes</p>
+      </div>
+      <div class="value-item">
+        <i class="fas fa-hand-sparkles"></i>
+        <h4>Hygienic Standards</h4>
+        <p>Maintaining the highest standards of cleanliness and food safety</p>
+      </div>
+      <div class="value-item">
+        <i class="fas fa-lightbulb"></i>
+        <h4>Innovation</h4>
+        <p>Continuously improving and expanding our product offerings</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-content">
+    <div>
+      <h3>Luxi Foods</h3>
+      <p>Premium food products you can trust. We're committed to delivering excellence in every bite.</p>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#about">About Us</a>
+      </div>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <p><i class="fas fa-envelope"></i> info@luxifoods.com</p>
+      <p><i class="fas fa-phone"></i> +233 XXX XXX XXX</p>
+      <p><i class="fas fa-map-marker-alt"></i> Ghana</p>
+    </div>
+
+    <div>
+      <h3>Follow Us</h3>
+      <div class="socials">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="copyright">
+    © 2025 Luxi Foods. All Rights Reserved. Crafted with passion for quality.
+  </div>
+</footer>
+
+<div class="scroll-top">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
