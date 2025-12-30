@@ -1,61 +1,11 @@
-// LOADING SCREEN
+// Loading Screen
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.querySelector('.loading').classList.add('hidden');
   }, 1000);
 });
 
-// CURSOR TRAIL
-const dots = document.querySelectorAll('.cursor-dot');
-const cursorPos = { x: 0, y: 0 };
-const dotPositions = Array(5).fill({ x: 0, y: 0 });
-
-document.addEventListener('mousemove', (e) => {
-  cursorPos.x = e.clientX;
-  cursorPos.y = e.clientY;
-});
-
-function animateDots() {
-  let x = cursorPos.x;
-  let y = cursorPos.y;
-
-  dots.forEach((dot, i) => {
-    dot.style.left = x + 'px';
-    dot.style.top = y + 'px';
-    dot.style.opacity = '0.6';
-    dot.style.transform = `scale(${1 - i * 0.15})`;
-    
-    const nextDot = dotPositions[i] || { x, y };
-    x += (nextDot.x - x) * 0.3;
-    y += (nextDot.y - y) * 0.3;
-    dotPositions[i] = { x, y };
-  });
-
-  requestAnimationFrame(animateDots);
-}
-
-animateDots();
-
-// SLIDER
-const slides = document.querySelectorAll('.slide');
-const sliderDots = document.querySelectorAll('.slider-dot');
-let slideIndex = 0;
-
-function showSlide(n) {
-  slides[slideIndex].classList.remove('active');
-  sliderDots[slideIndex].classList.remove('active');
-  slideIndex = (n + slides.length) % slides.length;
-  slides[slideIndex].classList.add('active');
-  sliderDots[slideIndex].classList.add('active');
-}
-
-sliderDots.forEach((dot, i) => {
-  dot.addEventListener('click', () => showSlide(i));
-});
-
-setInterval(() => showSlide(slideIndex + 1), 5000);
-
-// MOBILE MENU
+// Mobile Menu Toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -63,43 +13,47 @@ menuToggle.addEventListener('click', () => {
   navMenu.classList.toggle('active');
 });
 
-navMenu.querySelectorAll('a').forEach(link => {
+// Close menu when clicking on a link
+document.querySelectorAll('.nav-menu a').forEach(link => {
   link.addEventListener('click', () => {
     navMenu.classList.remove('active');
   });
 });
 
-// SCROLL EFFECTS
-const header = document.querySelector('header');
-const scrollTop = document.querySelector('.scroll-top');
-const sections = document.querySelectorAll('.section-title, .product-card');
-
+// Scroll Header Effect
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) {
+  const header = document.querySelector('header');
+  if (window.scrollY > 50) {
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
   }
-
-  if (window.scrollY > 500) {
-    scrollTop.classList.add('visible');
-  } else {
-    scrollTop.classList.remove('visible');
-  }
-
-  sections.forEach(section => {
-    const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      section.classList.add('visible');
-    }
-  });
 });
 
-scrollTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+// Hero Slider
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.slider-dot');
+
+function showSlide(n) {
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+  
+  currentSlide = (n + slides.length) % slides.length;
+  
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => showSlide(index));
 });
 
-// PRODUCT FILTERS
+setInterval(() => {
+  showSlide(currentSlide + 1);
+}, 5000);
+
+// Product Filter
 const filterBtns = document.querySelectorAll('.filter-btn');
 const productCards = document.querySelectorAll('.product-card');
 
@@ -108,50 +62,90 @@ filterBtns.forEach(btn => {
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     
-    const filter = btn.getAttribute('data-filter');
+    const filter = btn.dataset.filter;
     
     productCards.forEach(card => {
-      if (filter === 'all') {
+      if (filter === 'all' || card.dataset.category === filter) {
         card.classList.remove('hidden');
+        setTimeout(() => card.classList.add('visible'), 10);
       } else {
-        if (card.getAttribute('data-category') === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
+        card.classList.add('hidden');
       }
     });
   });
 });
 
-// TESTIMONIALS
-let testimonialIndex = 0;
+// Show products on load
+setTimeout(() => {
+  productCards.forEach(card => card.classList.add('visible'));
+}, 100);
+
+// Testimonial Slider
+let currentTestimonial = 0;
 const testimonials = document.querySelectorAll('.testimonial');
 
 function changeTestimonial(direction) {
-  testimonials[testimonialIndex].classList.remove('active');
-  testimonialIndex = (testimonialIndex + direction + testimonials.length) % testimonials.length;
-  testimonials[testimonialIndex].classList.add('active');
+  testimonials[currentTestimonial].classList.remove('active');
+  currentTestimonial = (currentTestimonial + direction + testimonials.length) % testimonials.length;
+  testimonials[currentTestimonial].classList.add('active');
 }
 
-setInterval(() => changeTestimonial(1), 6000);
+// Auto-rotate testimonials
+setInterval(() => {
+  changeTestimonial(1);
+}, 6000);
 
-// NEWSLETTER
+// Newsletter Form
 function handleNewsletter(e) {
   e.preventDefault();
-  const input = e.target.querySelector('input');
-  alert(`Thank you for subscribing! We'll send updates to ${input.value}`);
-  input.value = '';
+  alert('Thank you for subscribing to Luxi Foods newsletter!');
+  e.target.reset();
 }
 
-// PRODUCT IMAGE GALLERY
-const mainImage = document.getElementById('mainImage');
-const thumbs = document.querySelectorAll('.thumb');
-if (mainImage && thumbs.length > 0) {
-  thumbs.forEach(img => {
-    img.onclick = () => mainImage.src = img.src;
+// Scroll Animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
   });
-}
+}, observerOptions);
 
-// INITIAL TRIGGER
-window.dispatchEvent(new Event('scroll'));
+document.querySelectorAll('.section-title').forEach(el => observer.observe(el));
+
+// Scroll to Top Button
+const scrollTopBtn = document.querySelector('.scroll-top');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    scrollTopBtn.classList.add('visible');
+  } else {
+    scrollTopBtn.classList.remove('visible');
+  }
+});
+
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+// Smooth Scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
